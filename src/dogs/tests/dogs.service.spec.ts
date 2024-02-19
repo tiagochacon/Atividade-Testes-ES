@@ -1,10 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DogsService } from '../dogs.service';
-import { generateShortestPath } from '../data-structure/dijkstra';
-
-jest.mock('../data-structure/dijkstra', () => ({
-  generateShortestPath: jest.fn(),
-}));
 
 describe('DogsService', () => {
   let service: DogsService;
@@ -20,9 +15,9 @@ describe('DogsService', () => {
   it('should return the shortest path - test 1', async () => {
     const expectedResult = {
       "points": [
-        "5",
+        5,
         78,
-        "89"
+        89
       ],
       "distances": [
         2.1,
@@ -33,20 +28,17 @@ describe('DogsService', () => {
       "destiny": "Cristado chinês"
     };
   
-    (generateShortestPath as jest.Mock).mockResolvedValue(expectedResult);
-  
     expect(await service.getShortestPath(5, 89)).toEqual(expectedResult);
   });
-
 
   it('should return the shortest path - test 2', async () => {
     const expectedResult1 = {
       "points": [
-        "20",
+        20,
         78,
         89,
         60,
-        "50"
+        50
       ],
       "distances": [
         1,
@@ -59,22 +51,20 @@ describe('DogsService', () => {
       "destiny": "Retriever da Nova Escócia"
     };
 
-    (generateShortestPath as jest.Mock).mockResolvedValue(expectedResult1);
-
     expect(await service.getShortestPath(20, 50)).toEqual(expectedResult1);
   });
 
   it('should return the shortest path - test 3', async () => {
     const expectedResult = {
       "points": [
-        "13",
+        13,
         46,
         25,
         11,
         50,
         60,
         47,
-        "76"
+        76
       ],
       "distances": [
         2.7,
@@ -89,8 +79,6 @@ describe('DogsService', () => {
       "origin": "Bernese mountain",
       "destiny": "Spaniel Tibetano"
     };
-  
-    (generateShortestPath as jest.Mock).mockResolvedValue(expectedResult);
   
     expect(await service.getShortestPath(13, 76)).toEqual(expectedResult);
   });
