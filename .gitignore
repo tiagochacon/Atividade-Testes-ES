@@ -33,6 +33,3 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-src/dogs/data-structure/dijkstra.ts
-src/dogs/data-structure/helpers/queue.ts
